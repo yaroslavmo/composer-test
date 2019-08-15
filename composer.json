@@ -32,7 +32,7 @@
   "require":     {
     "dreamfactory/df-database":              "~0.9.4",
     "dreamfactory/df-file":                  "~0.6.3",
-    "microsoft/azure-storage":               "0.13.*",
+    "microsoft/azure-storage":               "0.19.*",
     "dreamfactory/azure-documentdb-php-sdk": "~0.2.0"
   },
   "autoload":    {
