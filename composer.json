@@ -1,20 +1,28 @@
 {
-  "name":        "dreamfactory/df-azure",
-  "description": "Microsoft Azure package containing Azure services for the DreamFactory Platform 2.0.",
+  "name":        "dreamfactory/df-core",
+  "description": "DreamFactory(tm) Core Components",
+  "homepage":    "https://www.dreamfactory.com/",
   "keywords":    [
     "dreamfactory",
     "laravel",
     "rest",
-    "azure",
-    "azure blob",
-    "azure table"
+    "api",
+    "automatic-api",
+    "mbaas",
+    "baas",
+    "paas"
   ],
-  "homepage":    "https://www.dreamfactory.com/",
-  "license":     "Apache-2.0",
+  "license":     [
+    "Apache-2.0"
+  ],
   "authors":     [
     {
       "name":  "Arif Islam",
       "email": "arifislam@dreamfactory.com"
+    },
+    {
+      "name": "Charles Harmon",
+      "email": "charlesharmon@dreamfactory.com"
     },
     {
       "name":  "Lee Hicks",
@@ -23,31 +31,42 @@
   ],
   "support":     {
     "email":  "dspsupport@dreamfactory.com",
-    "source": "https://github.com/dreamfactorysoftware/df-azure",
-    "issues": "https://github.com/dreamfactorysoftware/df-azure/issues",
+    "source": "https://github.com/dreamfactorysoftware/df-core",
+    "issues": "https://github.com/dreamfactorysoftware/df-core/issues",
     "wiki":   "https://wiki.dreamfactory.com"
   },
-  "minimum-stability": "dev",
-  "prefer-stable":     true,
   "require":     {
-    "dreamfactory/df-database":              "~0.9.4",
-    "dreamfactory/df-file":                  "~0.6.3",
-    "microsoft/azure-storage":               "0.13.*",
-    "dreamfactory/azure-documentdb-php-sdk": "~0.2.0"
+    "php":                    ">=7.0.0",
+    "barryvdh/laravel-cors":  "~0.10.0",
+    "doctrine/dbal":          "~2.5.0",
+    "guzzlehttp/guzzle":      "~6.0",
+    "symfony/yaml":           "~2.8|~3.0",
+    "tymon/jwt-auth":         "~1.0.0-rc.4.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "@stable"
   },
   "autoload":    {
+    "files": [
+      "src/helpers.php"
+    ],
     "psr-4": {
-      "DreamFactory\\Core\\Azure\\": "src/"
+      "DreamFactory\\Core\\": "src/"
     }
   },
   "extra":       {
     "branch-alias": {
-      "dev-develop": "0.15.x-dev"
+      "dev-develop": "0.14.x-dev"
     },
     "laravel": {
       "providers": [
-        "DreamFactory\\Core\\Azure\\ServiceProvider"
-      ]
+        "DreamFactory\\Core\\LaravelServiceProvider"
+      ],
+      "aliases": {
+        "ServiceManager": "DreamFactory\\Core\\Facades\\ServiceManager",
+        "SystemTableModelMapper": "DreamFactory\\Core\\Facades\\SystemTableModelMapper",
+        "DbSchemaExtensions": "DreamFactory\\Core\\Facades\\DbSchemaExtensions"
+      }
     }
   }
 }
